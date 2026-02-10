@@ -47,7 +47,8 @@ const Navbar = () => {
                     <li><a href="#skills" onClick={() => setIsOpen(false)}>Skills</a></li>
                     <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
                     <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
-                    <li><a href="/resume.pdf" download className="nav-resume-btn" onClick={() => setIsOpen(false)}>Resume</a></li>
+                    <li><a href="/Aditya-DevopsResume.pdf" download className="nav-resume-btn">Resume</a></li>
+
                 </ul>
             </div>
         </>
