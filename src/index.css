@@ -128,10 +128,12 @@ h6 {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  display: block;
+  /* Changed from inline-block to block */
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  /* Ensures formatting stays tight */
 }
 
 .section-title::after {

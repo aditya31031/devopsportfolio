@@ -4,7 +4,6 @@ import { FaSun, FaMoon } from 'react-icons/fa';
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [theme, setTheme] = useState('light');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -17,14 +16,6 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, [scrolled]);
-
-    useEffect(() => {
-        document.documentElement.setAttribute('data-theme', theme);
-    }, [theme]);
-
-    const toggleTheme = () => {
-        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
-    };
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -43,11 +34,7 @@ const Navbar = () => {
                     <li><a href="#skills" onClick={() => setIsOpen(false)}>Skills</a></li>
                     <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
                     <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
-                    <li>
-                        <button className="theme-toggle" onClick={toggleTheme}>
-                            {theme === 'light' ? <FaMoon /> : <FaSun />}
-                        </button>
-                    </li>
+                    {/* Theme toggle removed */}
                     <li><a href="/resume.pdf" download className="nav-resume-btn" onClick={() => setIsOpen(false)}>Resume</a></li>
                 </ul>
             </div>
