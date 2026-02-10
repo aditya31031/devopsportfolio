@@ -30,7 +30,7 @@ function App() {
       <Skills />
       <Projects />
       <Contact />
-      <Footer />
+      {/* Footer removed as per request */}
     </div>
   );
 }

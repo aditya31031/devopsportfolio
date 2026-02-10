@@ -7,22 +7,10 @@ const Hero = () => {
       <div className="container hero-content">
         <span className="hero-badge">Available for Hire</span>
         <h1 className="text-gradient">
-          Building Scalable <br />
-          <TypeAnimation
-            sequence={[
-              'Cloud Infrastructure',
-              2000,
-              'CI/CD Pipelines',
-              2000,
-              'Secure Systems',
-              2000,
-              'DevOps Solutions',
-              2000
-            ]}
-            wrapper="span"
-            speed={50}
-            repeat={Infinity}
-          />
+          <h1>
+            Hi, I'm <span className="highlight">Aditya</span> <br />
+            DevOps Engineer
+          </h1>
         </h1>
         <p>
           I help companies automate deployment, scale effortlessly, and ensure 99.99% uptime.
