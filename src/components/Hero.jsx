@@ -7,10 +7,8 @@ const Hero = () => {
       <div className="container hero-content">
         <span className="hero-badge">Available for Hire</span>
         <h1 className="text-gradient">
-          <h1>
-            Hi, I'm <span className="highlight">Aditya</span> <br />
-            DevOps Engineer
-          </h1>
+          Hi, I'm <span className="highlight">Aditya</span> <br />
+          DevOps Engineer
         </h1>
         <p>
           I help companies automate deployment, scale effortlessly, and ensure 99.99% uptime.
