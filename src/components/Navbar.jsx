@@ -22,23 +22,35 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-            <div className="container navbar-container">
-                <a href="#" className="logo">DevOps<span className="logo-accent">.</span>Port</a>
+        <>
+            <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+                <div className="container navbar-container">
+                    <a href="#" className="logo">DevOps<span className="logo-accent">.</span>Port</a>
 
-                <div className="menu-toggle" onClick={toggleMenu}>
-                    <div className={`hamburger ${isOpen ? 'open' : ''}`}></div>
+                    <div className="menu-toggle" onClick={toggleMenu}>
+                        <div className={`hamburger ${isOpen ? 'open' : ''}`}></div>
+                    </div>
+
+                    {/* Desktop Menu */}
+                    <ul className="nav-links desktop-menu">
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="/resume.pdf" download className="nav-resume-btn">Resume</a></li>
+                    </ul>
                 </div>
+            </nav>
 
-                <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
+            {/* Mobile Menu Overlay - Outside navbar to avoid clipping */}
+            <div className={`mobile-menu-overlay ${isOpen ? 'active' : ''}`}>
+                <ul className="mobile-nav-links">
                     <li><a href="#skills" onClick={() => setIsOpen(false)}>Skills</a></li>
                     <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
                     <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
-                    {/* Theme toggle removed */}
                     <li><a href="/resume.pdf" download className="nav-resume-btn" onClick={() => setIsOpen(false)}>Resume</a></li>
                 </ul>
             </div>
-        </nav>
+        </>
     );
 };
 

@@ -35,11 +35,19 @@
 }
 
 /* Navigation - Floating Pill */
+.mobile-menu-overlay {
+  display: none;
+  /* Hidden by default on Desktop */
+}
+
 .navbar {
   position: fixed;
   top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  /* Centering without transform to avoid fixed child issues */
+  /* transform: translateX(-50%); REMOVED */
   width: 90%;
   max-width: 900px;
   z-index: 1000;
@@ -630,45 +638,52 @@
     position: relative;
   }
 
-  .nav-links {
+  .desktop-menu {
+    display: none;
+  }
+
+  /* Full Screen Mobile Overlay */
+  .mobile-menu-overlay {
     position: fixed;
     top: 0;
     right: -100%;
-    /* Hidden off-screen by default */
-    height: 100vh;
     width: 100%;
-    /* Full screening */
-    background: var(--bg-color);
-    /* Use theme variable */
-    backdrop-filter: blur(15px);
-    flex-direction: column;
-    align-items: center;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    /* Solid-ish light bg */
+    backdrop-filter: blur(20px);
+    z-index: 999;
+    /* Below toggle (1002) but above content */
+    display: flex;
     justify-content: center;
-    /* Center content vertically too */
-    padding-top: 0;
-    /* Remove top padding to center content */
-    gap: 2.5rem;
-    /* Increase gap */
-    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: none;
-    /* Full screen doesn't need shadow */
-    margin-top: 0;
-    z-index: 1000;
+    align-items: center;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
   }
 
-  /* When active, bring it on screen */
-  .nav-links.active {
-    right: 0 !important;
-    /* Force override */
-  }
-
-  .nav-links.active {
+  .mobile-menu-overlay.active {
     right: 0;
   }
 
-  .nav-links a {
-    font-size: 1.5rem;
+  .mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    padding: 0;
+  }
+
+  .mobile-nav-links a {
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .mobile-nav-links a:hover {
+    color: var(--primary-color);
   }
 }
 
