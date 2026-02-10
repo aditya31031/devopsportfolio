@@ -11,13 +11,13 @@ const Contact = () => {
                     I'll try my best to get back to you!
                 </p>
                 <div className="social-links">
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <a href="https://www.linkedin.com/in/aditya-m-software/" target="_blank" rel="noopener noreferrer" className="social-icon">
                         <FaLinkedin /> LinkedIn
                     </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" className="social-icon">
+                    <a href="https://github.com/aditya31031?tab=repositories" target="_blank" rel="noopener noreferrer" className="social-icon">
                         <FaGithub /> GitHub
                     </a>
-                    <a href="mailto:email@example.com" className="social-icon">
+                    <a href="mailto:aditya31031998@gmail.com" className="social-icon">
                         <FaEnvelope /> Email
                     </a>
                 </div>

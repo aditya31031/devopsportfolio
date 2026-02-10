@@ -68,18 +68,18 @@
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  border-color: var(--primary-color);
-  /* Highlight on scroll */
+  background: rgba(255, 255, 255, 0.5);
+  /* Semi-transparent */
+  box-shadow: 0 0px 3px 1px rgb(0, 0, 0);
+  border-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px);
+  /* Strong blur */
 }
 
 .navbar.scrolled:hover {
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
   border-color: var(--primary-color);
-  /* Highlight on scroll */
 }
 
 [data-theme='dark'] .navbar.scrolled {
@@ -795,7 +795,6 @@
 
 @media (max-width: 768px) {
   .footer-container {
-    grid-template-columns: 1fr;
     gap: 2rem;
     text-align: center;
   }
@@ -806,5 +805,140 @@
 
   .footer-social .social-icons {
     justify-content: center;
+  }
+}
+
+
+
+/* Experience Section - Minimalist Box Grid */
+.experience-section {
+  padding: 6rem 0;
+  position: relative;
+}
+
+.timeline {
+  /* No longer a timeline, but a grid */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Remove timeline lines/dots */
+.timeline::after {
+  display: none;
+}
+
+.timeline-dot {
+  display: none;
+}
+
+.timeline-item.right {
+  left: auto;
+}
+
+.timeline-item.left {
+  left: auto;
+}
+
+.timeline-item {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+}
+
+.timeline-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.timeline-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.timeline-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+/* The 'Card' */
+.timeline-content {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.timeline-content:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+}
+
+/* Remove accents/arrows */
+.timeline-content::before,
+.timeline-content::after {
+  display: none;
+}
+
+/* Header Area */
+.timeline-content h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.timeline-content h4 {
+  font-size: 1rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  background: rgba(79, 70, 229, 0.08);
+  /* Light pill bg */
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+}
+
+/* Date moved to bottom or top? Let's keep it top-right style or strict uniform */
+.timeline-date {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.timeline-content p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* Specific left/right override cleanup */
+.timeline-item.left .timeline-content,
+.timeline-item.right .timeline-content {
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .timeline {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
   }
 }
