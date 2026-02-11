@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFolder, FaCode, FaServer, FaCloud } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Projects = () => {
     const projects = [
@@ -30,12 +31,27 @@ const Projects = () => {
     ];
 
     return (
-        <section id="projects" className="section reveal">
+        <section id="projects" className="section">
             <div className="container">
-                <h2 className="section-title text-gradient">Featured Projects</h2>
+                <motion.h2
+                    className="section-title text-gradient"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    Featured Projects
+                </motion.h2>
                 <div className="projects-grid">
                     {projects.map((project, index) => (
-                        <div key={index} className="project-card reveal">
+                        <motion.div
+                            key={index}
+                            className="project-card glass-card"
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                            whileHover={{ y: -10 }}
+                        >
                             <div className="project-content">
                                 <h3><span className="project-icon">{project.icon}</span> {project.title}</h3>
                                 <p>{project.description}</p>
@@ -48,7 +64,7 @@ const Projects = () => {
                                 </div>
                                 {/* <a href={project.link} className="project-link">View Project &rarr;</a> */}
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>
