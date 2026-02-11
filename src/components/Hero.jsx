@@ -8,26 +8,25 @@ const Hero = () => {
         <span className="hero-badge">Available for Hire</span>
         <h1 className="text-gradient">
           Hi, I'm <span className="highlight">Aditya</span> <br />
-          <TypeAnimation
-            sequence={[
-              'DevOps Engineer',
-              2000,
-              'Cloud Engineer',
-              2000,
-              'AWS Expert',
-              2000,
-              'CI/CD Specialist',
-              2000,
-              'Kubernetes Admin',
-              2000,
-              'Platform Engineer',
-              2000
-            ]}
-            wrapper="span"
-            speed={50}
-            className="typewriter-text"
-            repeat={Infinity}
-          />
+        <TypeAnimation
+  sequence={[
+    'DevOps',
+    2000,
+    'CI/CD Pipeline Specialist',
+    2000,
+    'Automation Enthusiast',
+    2000,
+    'Kubernetes & Docker',
+    2000,
+    'Cloud & Infrastructure',
+    2000
+  ]}
+  wrapper="span"
+  speed={50}
+  className="typewriter-text"
+  repeat={Infinity}
+/>
+
         </h1>
         <p>
           I help companies automate deployment, scale effortlessly, and ensure 99.99% uptime.

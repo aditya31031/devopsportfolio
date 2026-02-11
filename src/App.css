@@ -70,7 +70,7 @@
 .navbar.scrolled {
   background: rgba(255, 255, 255, 0.5);
   /* Semi-transparent */
-  box-shadow: 0 0px 3px 1px rgb(0, 0, 0);
+  box-shadow: 0 5px 5px 1px brown;
   border-color: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(15px);
   /* Strong blur */
@@ -347,10 +347,8 @@
 
 /* Glowing Border Effect on Hover */
 .skill-category:hover {
-  border-color: var(--primary-color);
   box-shadow: 0 0 20px 2px var(--glow-color);
-  /* Outer glow, no lift */
-  transform: none;
+
 }
 
 /* REMOVED: .skill-category:hover .item-icon rule to prevent icon change on card hover */
@@ -489,8 +487,6 @@
 .project-card:hover {
   transform: none;
   box-shadow: 0 0 20px 2px var(--glow-color);
-  /* Outer glow */
-  border-color: var(--primary-color);
 }
 
 [data-theme='dark'] .project-card {
@@ -938,9 +934,7 @@
 }
 
 .timeline-content:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.1);
-  border-color: var(--primary-color);
+  box-shadow: 0 0px 50px -10px rgba(0, 0, 0, 0.1);
 }
 
 /* Remove accents/arrows */
