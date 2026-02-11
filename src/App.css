@@ -823,10 +823,10 @@
 .workflow-line-container {
   position: absolute;
   top: calc(2rem + 30px);
-  left: calc(2rem + 30px);
-  /* Align with center of first icon (2rem padding + 30px half-width) */
-  right: calc(2rem + 30px);
-  /* Align with center of last icon */
+  left: calc(2rem + 40px);
+  /* Align with center of first icon (2rem padding + 40px half-width of 80px step) */
+  width: calc(100% - (4rem + 80px));
+  /* Full width minus left and right offsets */
   height: 4px;
   background: var(--surface-2);
   transform: translateY(-50%);
@@ -906,13 +906,12 @@
 @media (max-width: 900px) {
   .workflow-container {
     justify-content: flex-start;
-    padding-bottom: 1rem;
+    padding-bottom: 20px;
     /* Space for scrollbar */
   }
 
   .workflow-track {
-    width: max-content;
-    min-width: 100%;
-    /* Ensure track grows with content so line spans full length */
+    min-width: max-content;
+    /* Force track to be as wide as its content */
   }
 }
