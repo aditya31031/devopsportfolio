@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 // --- Custom Animated Components ---
@@ -126,12 +126,34 @@ const steps = [
 const DevOpsWorkflow = () => {
     const [activeStep, setActiveStep] = useState(0);
 
+    const scrollContainerRef = useRef(null);
+
     useEffect(() => {
         const interval = setInterval(() => {
             setActiveStep((prev) => (prev + 1) % steps.length);
         }, 3000); // Slower interval to allow for travel + animation
         return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+        // Auto-scroll logic for mobile
+        const container = scrollContainerRef.current;
+        const activeStepEl = document.getElementById(`step-${activeStep}`);
+
+        if (container && activeStepEl) {
+            const containerWidth = container.offsetWidth;
+            const stepLeft = activeStepEl.offsetLeft;
+            const stepWidth = activeStepEl.offsetWidth;
+
+            // Calculate center position
+            const scrollPos = stepLeft - (containerWidth / 2) + (stepWidth / 2);
+
+            container.scrollTo({
+                left: scrollPos,
+                behavior: 'smooth'
+            });
+        }
+    }, [activeStep]);
 
     const activeColor = steps[activeStep].color;
 
@@ -156,7 +178,7 @@ const DevOpsWorkflow = () => {
                     DevOps Lifecycle
                 </motion.h2>
 
-                <div className="workflow-container">
+                <div className="workflow-container" ref={scrollContainerRef}>
                     <div className="workflow-track">
                         {/* Connecting Line */}
                         <div className="workflow-line-container">
@@ -180,7 +202,7 @@ const DevOpsWorkflow = () => {
                             const isPassed = index <= activeStep;
                             const isCurrent = index === activeStep;
                             return (
-                                <div key={index} className="workflow-step">
+                                <div key={index} id={`step-${index}`} className="workflow-step">
                                     <div
                                         className="step-icon-wrapper glass-card"
                                         style={{
