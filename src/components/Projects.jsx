@@ -1,6 +1,51 @@
 import React from 'react';
 import { FaFolder, FaCode, FaServer, FaCloud } from 'react-icons/fa';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
+
+const TiltCard = ({ children, className }) => {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+    const rotateX = useTransform(y, [-100, 100], [10, -10]);
+    const rotateY = useTransform(x, [-100, 100], [-10, 10]);
+
+    function handleMouseMove(event) {
+        const rect = event.currentTarget.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        const mouseX = event.clientX - rect.left;
+        const mouseY = event.clientY - rect.top;
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+        x.set(xPct * 200); // Amplify movement
+        y.set(yPct * 200);
+    }
+
+    function handleMouseLeave() {
+        x.set(0);
+        y.set(0);
+    }
+
+    return (
+        <motion.div
+            className={className}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+            }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            viewport={{ once: true }}
+        >
+            <div style={{ transform: "translateZ(20px)" }}>
+                {children}
+            </div>
+        </motion.div>
+    );
+};
 
 const Projects = () => {
     const projects = [
@@ -43,14 +88,9 @@ const Projects = () => {
                 </motion.h2>
                 <div className="projects-grid">
                     {projects.map((project, index) => (
-                        <motion.div
+                        <TiltCard
                             key={index}
                             className="project-card glass-card"
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                            whileHover={{ y: -10 }}
                         >
                             <div className="project-content">
                                 <h3><span className="project-icon">{project.icon}</span> {project.title}</h3>
@@ -62,9 +102,8 @@ const Projects = () => {
                                         </span>
                                     ))}
                                 </div>
-                                {/* <a href={project.link} className="project-link">View Project &rarr;</a> */}
                             </div>
-                        </motion.div>
+                        </TiltCard>
                     ))}
                 </div>
             </div>
