@@ -75,14 +75,7 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
-  /* Tech Grid + Mesh Gradient Background */
-  background-image:
-    linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-    radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.12), transparent 25%),
-    radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.12), transparent 25%);
-  background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
-  background-attachment: fixed;
+
 }
 
 h1,
