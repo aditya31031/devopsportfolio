@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSun, FaMoon } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -25,13 +24,13 @@ const Navbar = () => {
     return (
         <>
             <motion.nav
-                className={`navbar ${scrolled ? 'scrolled glass-nav' : ''}`}
+                className={`navbar ${scrolled ? 'scrolled' : ''}`}
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
             >
-                <div className="container navbar-container">
-                    <a href="#" className="logo">DevOps<span className="logo-accent">.</span>Port</a>
+                <div className="navbar-container">
+                    <a href="#" className="logo">Aditya<span>.</span>DevOps</a>
 
                     <div className="menu-toggle" onClick={toggleMenu}>
                         <div className={`hamburger ${isOpen ? 'open' : ''}`}></div>
@@ -39,26 +38,37 @@ const Navbar = () => {
 
                     {/* Desktop Menu */}
                     <ul className="nav-links desktop-menu">
-                        {['Skills', 'Projects', 'Contact'].map((item) => (
+                        {['Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
                             <li key={item}>
                                 <a href={`#${item.toLowerCase()}`} className="nav-link">
                                     {item}
                                 </a>
                             </li>
                         ))}
-                        <li><a href="/Aditya-DevopsResume.pdf" download className="nav-resume-btn">Resume</a></li>
+                        <li>
+                            <a href="/Aditya-DevopsResume.pdf" download className="resume-btn">
+                                Resume
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </motion.nav>
 
-            {/* Mobile Menu Overlay - Outside navbar to avoid clipping */}
+            {/* Mobile Menu Overlay */}
             <div className={`mobile-menu-overlay ${isOpen ? 'active' : ''}`}>
                 <ul className="mobile-nav-links">
-                    <li><a href="#skills" onClick={() => setIsOpen(false)}>Skills</a></li>
-                    <li><a href="#projects" onClick={() => setIsOpen(false)}>Projects</a></li>
-                    <li><a href="#contact" onClick={() => setIsOpen(false)}>Contact</a></li>
-                    <li><a href="/Aditya-DevopsResume.pdf" download className="nav-resume-btn">Resume</a></li>
-
+                    {['Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
+                        <li key={item}>
+                            <a href={`#${item.toLowerCase()}`} onClick={() => setIsOpen(false)}>
+                                {item}
+                            </a>
+                        </li>
+                    ))}
+                    <li>
+                        <a href="/Aditya-DevopsResume.pdf" download className="nav-resume-btn" onClick={() => setIsOpen(false)}>
+                            Resume
+                        </a>
+                    </li>
                 </ul>
             </div>
         </>

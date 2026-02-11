@@ -7,57 +7,55 @@ const Hero = () => {
     <section className="hero">
       <div className="container hero-content">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="hero-badge glass-card" style={{ padding: '0.5rem 1rem', borderRadius: '50px', fontSize: '0.875rem', marginBottom: '1.5rem', display: 'inline-block' }}>
+          <span className="hire-badge">
             Available for Hire
           </span>
-          <h1 className="text-gradient">
-            Hi, I'm <span className="highlight">Aditya</span> <br />
+          <h1>
+            Building Scalable <br />
+            <span className="highlight">Infrastructure</span> & <span className="highlight">Automation</span>
+          </h1>
+
+          <div className="typewriter">
             <TypeAnimation
               sequence={[
-                'DevOps',
+                'DevOps Engineer',
                 2000,
-                'CI/CD Pipeline Specialist',
+                'Cloud Architect',
                 2000,
-                'Automation Enthusiast',
+                'Kubernetes Specialist',
                 2000,
-                'Kubernetes & Docker',
-                2000,
-                'Cloud & Infrastructure',
+                'CI/CD Expert',
                 2000
               ]}
               wrapper="span"
               speed={50}
-              className="typewriter-text"
               repeat={Infinity}
             />
-          </h1>
+          </div>
         </motion.div>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
         >
-          Automating CI/CD like it’s magic… because debugging is for mortals
+          Transforming manual processes into reliable, automated workflows. Specializing in AWS, Kubernetes, and Modern CI/CD.
         </motion.p>
 
         <motion.div
           className="hero-buttons"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
         >
-          <a href="#projects" className="cta-button">View Work</a>
-          <a href="#contact" className="cta-button secondary">Contact Me</a>
+          <a href="#projects" className="btn-primary">View Work</a>
+          <a href="#contact" className="btn-outline">Contact Me</a>
         </motion.div>
       </div>
-
-      {/* Background Decor */}
-      <div className="hero-glow" />
     </section>
   );
 };

@@ -2,50 +2,7 @@ import React from 'react';
 import { FaFolder, FaCode, FaServer, FaCloud } from 'react-icons/fa';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 
-const TiltCard = ({ children, className }) => {
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-    const rotateX = useTransform(y, [-100, 100], [10, -10]);
-    const rotateY = useTransform(x, [-100, 100], [-10, 10]);
 
-    function handleMouseMove(event) {
-        const rect = event.currentTarget.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseX = event.clientX - rect.left;
-        const mouseY = event.clientY - rect.top;
-        const xPct = mouseX / width - 0.5;
-        const yPct = mouseY / height - 0.5;
-        x.set(xPct * 200); // Amplify movement
-        y.set(yPct * 200);
-    }
-
-    function handleMouseLeave() {
-        x.set(0);
-        y.set(0);
-    }
-
-    return (
-        <motion.div
-            className={className}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{
-                rotateX,
-                rotateY,
-                transformStyle: "preserve-3d",
-            }}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            viewport={{ once: true }}
-        >
-            <div style={{ transform: "translateZ(20px)" }}>
-                {children}
-            </div>
-        </motion.div>
-    );
-};
 
 const Projects = () => {
     const projects = [
@@ -86,26 +43,47 @@ const Projects = () => {
                 >
                     Featured Projects
                 </motion.h2>
-                <div className="projects-grid">
+                <motion.div
+                    className="projects-grid"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.2
+                            }
+                        }
+                    }}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.1 }}
+                >
                     {projects.map((project, index) => (
-                        <TiltCard
-                            key={index}
-                            className="project-card glass-card"
-                        >
-                            <div className="project-content">
-                                <h3><span className="project-icon">{project.icon}</span> {project.title}</h3>
-                                <p>{project.description}</p>
-                                <div className="project-tech">
-                                    {project.tech.map((t, idx) => (
-                                        <span key={idx} className="tech-tag">
-                                            {t}
-                                        </span>
-                                    ))}
+                        <motion.div key={index} variants={{
+                            hidden: { opacity: 0, y: 50 },
+                            visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
+                        }}>
+                            <div className="project-card glass-card">
+                                <div className="project-header">
+                                    <div className="project-icon-large">
+                                        {project.icon}
+                                    </div>
+                                </div>
+                                <div className="project-body">
+                                    <h3>{project.title}</h3>
+                                    <p>{project.description}</p>
+                                    <div className="project-tech-stack">
+                                        {project.tech.map((t, idx) => (
+                                            <span key={idx} className="tech-pill">
+                                                {t}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                        </TiltCard>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     );

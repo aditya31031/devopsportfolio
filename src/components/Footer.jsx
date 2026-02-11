@@ -13,7 +13,7 @@ const Footer = () => {
                 <div className="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#">Home</a></li>
                         <li><a href="#skills">Skills</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
@@ -23,9 +23,9 @@ const Footer = () => {
                 <div className="footer-social">
                     <h3>Connect</h3>
                     <div className="social-icons">
-                        <a href="#" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
-                        <a href="#" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-                        <a href="mailto:email@example.com"><FaEnvelope /></a>
+                        <a href="https://www.linkedin.com/in/aditya-m-software/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                        <a href="https://github.com/aditya31031" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+                        <a href="mailto:aditya31031998@gmail.com"><FaEnvelope /></a>
                     </div>
                 </div>
             </div>

@@ -96,18 +96,22 @@ const Skills = () => {
                     {skills.map((skillGroup, index) => (
                         <motion.div
                             key={index}
-                            className="skill-category glass-card"
+                            className="skill-card glass-card"
                             variants={itemVariants}
-                            whileHover={{ y: -5, transition: { duration: 0.2 } }}
                         >
-                            <h3><span className="skill-icon">{skillGroup.icon}</span> {skillGroup.category}</h3>
-                            <ul className="skill-list">
+                            <div className="skill-header">
+                                <div className="skill-icon-wrapper">
+                                    {skillGroup.icon}
+                                </div>
+                                <h3>{skillGroup.category}</h3>
+                            </div>
+                            <div className="skill-tags">
                                 {skillGroup.items.map((item, idx) => (
-                                    <li key={idx}>
-                                        <span className="item-icon">{item.icon}</span> {item.name}
-                                    </li>
+                                    <span key={idx} className="skill-tag">
+                                        {item.icon} {item.name}
+                                    </span>
                                 ))}
-                            </ul>
+                            </div>
                         </motion.div>
                     ))}
                 </motion.div>

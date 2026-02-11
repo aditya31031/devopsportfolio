@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaBriefcase, FaGraduationCap } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const Experience = () => {
     const experiences = [
@@ -14,29 +15,45 @@ const Experience = () => {
             year: '2023 - July 2025',
             title: 'MCA (Master of Computer Applications)',
             company: 'Jain University',
-            description: 'specialization in Full Stack Development & Cloud Computing.',
+            description: 'Specialization in Full Stack Development & Cloud Computing.',
             type: 'education',
         },
     ];
 
     return (
-        <section id="experience" className="section reveal">
+        <section id="experience" className="section">
             <div className="container">
-                <h2 className="section-title text-gradient">Experience & Education</h2>
+                <motion.h2
+                    className="section-title text-gradient"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                >
+                    Experience & Education
+                </motion.h2>
 
-                <div className="timeline">
+                <div className="experience-grid">
                     {experiences.map((exp, index) => (
-                        <div key={index} className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
-                            <div className="timeline-dot">
-                                {exp.type === 'work' ? <FaBriefcase /> : <FaGraduationCap />}
+                        <motion.div
+                            key={index}
+                            className="experience-card glass-card"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                        >
+                            <div className="experience-header">
+                                <div className="experience-icon">
+                                    {exp.type === 'work' ? <FaBriefcase /> : <FaGraduationCap />}
+                                </div>
+                                <div>
+                                    <h3>{exp.title}</h3>
+                                    <h4>{exp.company}</h4>
+                                </div>
                             </div>
-                            <div className="timeline-content">
-                                <span className="timeline-date">{exp.year}</span>
-                                <h3>{exp.title}</h3>
-                                <h4>{exp.company}</h4>
-                                <p>{exp.description}</p>
-                            </div>
-                        </div>
+                            <span className="experience-date">{exp.year}</span>
+                            <p>{exp.description}</p>
+                        </motion.div>
                     ))}
                 </div>
             </div>

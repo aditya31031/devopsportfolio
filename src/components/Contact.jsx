@@ -34,14 +34,14 @@ const Contact = () => {
                             href={link.href}
                             target={link.label !== "Email" ? "_blank" : undefined}
                             rel={link.label !== "Email" ? "noopener noreferrer" : undefined}
-                            className="social-icon"
+                            className="social-btn"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.3 + index * 0.1 }}
                             whileHover={{ y: -5, boxShadow: "0 10px 20px -5px rgba(99, 102, 241, 0.4)" }}
                         >
-                            {link.icon} {link.label}
+                            {link.icon} <span>{link.label}</span>
                         </motion.a>
                     ))}
                 </div>
